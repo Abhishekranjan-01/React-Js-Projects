@@ -1,8 +1,27 @@
+import { useContext, useRef } from "react";
+import { TodoContext } from "./CrudContainer";
+
 const InputTodo = () => {
+  const todoNameRef = useRef("");
+  const { dispatchTodoList } = useContext(TodoContext);
   return (
-    <form action="">
+    <form
+      action=""
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatchTodoList({
+          name: "ADD_TODO",
+          payload: todoNameRef.current.value,
+        });
+        todoNameRef.current.value = "";
+      }}
+    >
       <div className="relative">
         <input
+          ref={todoNameRef}
+          onChange={(e) => {
+            todoNameRef.current.value = e.target.value;
+          }}
           type="text"
           placeholder="Start Typing... "
           className="w-full rounded-md text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none"
