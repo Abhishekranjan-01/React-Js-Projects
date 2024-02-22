@@ -11,7 +11,11 @@ const InputTodo = () => {
         e.preventDefault();
         dispatchTodoList({
           name: "ADD_TODO",
-          payload: todoNameRef.current.value,
+          payload: {
+            todoName: todoNameRef.current.value,
+            todoStatus: "ACTIVE",
+            UNIQUE_TODO_ID: Date.now(),
+          },
         });
         todoNameRef.current.value = "";
       }}
@@ -24,11 +28,11 @@ const InputTodo = () => {
           }}
           type="text"
           placeholder="Start Typing... "
-          className="w-full rounded-md text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none"
+          className="  w-full rounded-md text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-2 outline-none"
         />
         <button
           type="submit"
-          className="absolute right-1 sm:right-3 top-1 sm:top-1 px-2 bg-[#c31431ef] text-xs sm:text-lg text-gray-200 font-semibold w-fit rounded sm:rounded-md"
+          className="absolute right-1 sm:right-3 top-1 sm:top-2 px-2 bg-[#c31431ef] text-xs sm:text-lg text-gray-200 font-semibold w-fit rounded sm:rounded-md"
         >
           Create
         </button>

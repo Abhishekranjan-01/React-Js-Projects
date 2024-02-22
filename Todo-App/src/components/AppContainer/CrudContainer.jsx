@@ -1,23 +1,23 @@
 import { createContext, useReducer } from "react";
 import InputTodo from "./InputTodo";
-import addTodo from "../../store/TodoListStore";
+import addTodo, { completedTodo } from "../../store/TodoListStore";
 import TodoLists from "./TodoList";
 import TodoItem from "./TodoItem";
+import Summary from "./Summary";
 // import TodoContext from "../../store/TodoList";
 
 function reducer(todoList, action) {
   let newTodoList = todoList;
 
-  const deleteItem = () => {};
-
-  if (action.name == "ADD_TODO") {
+  if (action.name === "ADD_TODO") {
     newTodoList = addTodo(todoList, action);
-    console.log(newTodoList);
-    return newTodoList;
-  } else if (action.name == "DELETE_TODO") {
+  } else if (action.name === "COMPLETED_TODO") {
+    newTodoList = completedTodo(todoList, action);
   } else {
     return newTodoList;
   }
+  console.log(newTodoList);
+  return newTodoList;
 }
 
 let todoList = null;
@@ -31,15 +31,13 @@ const CrudContainer = () => {
   dispatchTodoList = DispatchTodoList;
 
   return (
-    <>
-      <TodoContext.Provider value={{ todoList, dispatchTodoList }}>
-        <div className="flex flex-col gap-10">
-          <InputTodo />
-          <TodoLists />
-          {/* <TodoItem /> */}
-        </div>
-      </TodoContext.Provider>
-    </>
+    <TodoContext.Provider value={{ todoList, dispatchTodoList }}>
+      <div className="flex flex-col gap-10">
+        <InputTodo />
+        <TodoLists />
+        {TodoList.length != 0 && <Summary />}
+      </div>
+    </TodoContext.Provider>
   );
 };
 export { TodoContext };

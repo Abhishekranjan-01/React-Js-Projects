@@ -1,6 +1,6 @@
 const TodoBanner = () => {
   return (
-    <h1 className="text-2xl sm:text-4xl text-start font-bold tracking-widest text-[#ff002b]">
+    <h1 className="text-2xl sm:text-4xl text-start font-bold tracking-widest text-gray-200">
       TODO
     </h1>
   );
