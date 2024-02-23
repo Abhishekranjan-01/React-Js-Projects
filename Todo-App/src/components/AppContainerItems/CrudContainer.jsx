@@ -14,7 +14,6 @@ function reducer(todoList, action) {
   } else if (action.name === "CLEAR_ALL") {
     newTodoList = [];
   } else if (action.name === "LOAD_PREVIOUS_TODO_LIST") {
-    console.log(action);
     newTodoList = action.payload;
   }
   return newTodoList;
@@ -34,8 +33,7 @@ const CrudContainer = () => {
   if (initalRender && localStorage.getItem("UNIQUE_TODO_LIST")) {
     const newTodoList = JSON.parse(localStorage.getItem("UNIQUE_TODO_LIST"));
     dispatchTodoList({ name: "LOAD_PREVIOUS_TODO_LIST", payload: newTodoList });
-    console.log(newTodoList);
-    console.log("Initial Start");
+
     setInitialRender(false);
   }
   localStorage.setItem("UNIQUE_TODO_LIST", JSON.stringify(TodoList));

@@ -1,4 +1,3 @@
-const completedTodoList = [];
 const addTodo = (todoList, action) => {
   return [action.payload, ...todoList];
 };

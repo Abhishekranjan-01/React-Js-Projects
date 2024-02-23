@@ -8,17 +8,16 @@ const TodoList = ({ currentDisplay }) => {
 
   return (
     <ul className="bg-white rounded-md overflow-y-scroll max-h-52 sm:max-h-[300px] md:max-h-[400px] py-2">
-      {console.log(todoList)}
       {todoList.map((item, i) => {
         return (
           <li
             id={item.UNIQUE_TODO_ID}
             key={item.UNIQUE_TODO_ID}
-            className="list-none px-2 bg-white rounded-md flex justify-center items-center"
+            className="list-none relative px-4 bg-white rounded-md flex flex-row flex-wrap justify-between items-center"
           >
             {(currentDisplay === "COMPLETED" || currentDisplay === "ALL") &&
               item.todoStatus === "COMPLETED" && (
-                <span className="text-green-500">
+                <span className="text-green-500 absolute left-1">
                   <FaCheckCircle />
                 </span>
               )}
@@ -42,7 +41,7 @@ const TodoList = ({ currentDisplay }) => {
                 </div>
               )}
             <span
-              className="text-xs sm:text-base h-fit w-fit"
+              className="text-xs sm:text-base h-fit w-fit absolute right-2"
               onClick={(e) => {
                 dispatchTodoList({
                   name: "COMPLETED_TODO",
