@@ -47,7 +47,10 @@ const CrudContainer = () => {
         {TodoList.length != 0 && (
           <>
             <AllTodoList currentDisplay={currentDisplay} />{" "}
-            <Summary setCurrentDisplay={setCurrentDisplay} />
+            <Summary
+              currentDisplay={currentDisplay}
+              setCurrentDisplay={setCurrentDisplay}
+            />
           </>
         )}
       </div>
