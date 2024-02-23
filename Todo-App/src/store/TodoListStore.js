@@ -1,20 +1,22 @@
 const completedTodoList = [];
 const addTodo = (todoList, action) => {
-  return [action, ...todoList];
+  return [action.payload, ...todoList];
 };
 const completedTodo = (todoList, action) => {
-  todoList.map((item, i) => {
-    if (item.payload.UNIQUE_TODO_ID === action.payload.UNIQUE_TODO_ID) {
-      item.payload = action.payload;
-      completedTodoList.push(item);
+  let newTodoList = todoList;
+
+  todoList.forEach((item) => {
+    if (item.UNIQUE_TODO_ID === action.UNIQUE_TODO_ID) {
+      item.todoStatus = "COMPLETED";
     }
   });
-  return [...todoList];
+
+  return [...newTodoList];
 };
 const countActiveTodo = (todoList) => {
   let count = 0;
   todoList.forEach((item) => {
-    if (item.payload.todoStatus === "ACTIVE") {
+    if (item.todoStatus === "ACTIVE") {
       count++;
     }
   });

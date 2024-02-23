@@ -8,18 +8,16 @@ const TodoList = ({ currentDisplay }) => {
 
   return (
     <ul className="bg-white rounded-md overflow-y-scroll max-h-52 sm:max-h-[300px] md:max-h-[400px] py-2">
+      {console.log(todoList)}
       {todoList.map((item, i) => {
-        {
-          console.log(item);
-        }
         return (
           <li
-            id={item.payload.UNIQUE_TODO_ID}
-            key={item.payload.UNIQUE_TODO_ID}
+            id={item.UNIQUE_TODO_ID}
+            key={item.UNIQUE_TODO_ID}
             className="list-none px-2 bg-white rounded-md flex justify-center items-center"
           >
             {(currentDisplay === "COMPLETED" || currentDisplay === "ALL") &&
-              item.payload.todoStatus === "COMPLETED" && (
+              item.todoStatus === "COMPLETED" && (
                 <span className="text-green-500">
                   <FaCheckCircle />
                 </span>
@@ -27,21 +25,20 @@ const TodoList = ({ currentDisplay }) => {
 
             {currentDisplay === "ALL" && (
               <div className="block text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none border-b border-b-gray-400 min-w-64 w-full text-wrap">
-                <p className="text-wrap">{item.payload.todoName}</p>
+                <p className="text-wrap">{item.todoName}</p>
               </div>
             )}
 
-            {currentDisplay === "ACTIVE" &&
-              item.payload.todoStatus === "ACTIVE" && (
-                <div className="block text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none border-b border-b-gray-400 min-w-64 w-full text-wrap">
-                  <p className="text-wrap">{item.payload.todoName}</p>
-                </div>
-              )}
+            {currentDisplay === "ACTIVE" && item.todoStatus === "ACTIVE" && (
+              <div className="block text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none border-b border-b-gray-400 min-w-64 w-full text-wrap">
+                <p className="text-wrap">{item.todoName}</p>
+              </div>
+            )}
 
             {currentDisplay === "COMPLETED" &&
-              item.payload.todoStatus === "COMPLETED" && (
+              item.todoStatus === "COMPLETED" && (
                 <div className="block text-sm sm:text-xl px-1 sm:px-2 py-0 sm:py-1 outline-none border-b border-b-gray-400 min-w-64 w-full text-wrap">
-                  <p className="text-wrap">{item.payload.todoName}</p>
+                  <p className="text-wrap">{item.todoName}</p>
                 </div>
               )}
             <span
@@ -50,15 +47,15 @@ const TodoList = ({ currentDisplay }) => {
                 dispatchTodoList({
                   name: "COMPLETED_TODO",
                   payload: {
-                    todoName: item.payload.todoName,
+                    todoName: item.todoName,
                     todoStatus: "COMPLETED",
-                    UNIQUE_TODO_ID: item.payload.UNIQUE_TODO_ID,
+                    UNIQUE_TODO_ID: item.UNIQUE_TODO_ID,
                   },
                 });
               }}
             >
               {(currentDisplay === "ACTIVE" || currentDisplay === "ALL") &&
-                item.payload.todoStatus === "ACTIVE" && <TfiCheck />}
+                item.todoStatus === "ACTIVE" && <TfiCheck />}
             </span>
           </li>
         );

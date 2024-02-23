@@ -10,11 +10,13 @@ function reducer(todoList, action) {
   if (action.name === "ADD_TODO") {
     newTodoList = addTodo(todoList, action);
   } else if (action.name === "COMPLETED_TODO") {
-    newTodoList = completedTodo(todoList, action);
+    newTodoList = completedTodo(todoList, action.payload);
   } else if (action.name === "CLEAR_ALL") {
     newTodoList = [];
+  } else if (action.name === "LOAD_PREVIOUS_TODO_LIST") {
+    console.log(action);
+    newTodoList = action.payload;
   }
-
   return newTodoList;
 }
 
@@ -26,8 +28,18 @@ const TodoContext = createContext(todoList, dispatchTodoList);
 const CrudContainer = () => {
   const [TodoList, DispatchTodoList] = useReducer(reducer, []);
   const [currentDisplay, setCurrentDisplay] = useState("ALL");
+  const [initalRender, setInitialRender] = useState(true);
   todoList = TodoList;
   dispatchTodoList = DispatchTodoList;
+  if (initalRender && localStorage.getItem("UNIQUE_TODO_LIST")) {
+    const newTodoList = JSON.parse(localStorage.getItem("UNIQUE_TODO_LIST"));
+    dispatchTodoList({ name: "LOAD_PREVIOUS_TODO_LIST", payload: newTodoList });
+    console.log(newTodoList);
+    console.log("Initial Start");
+    setInitialRender(false);
+  }
+  localStorage.setItem("UNIQUE_TODO_LIST", JSON.stringify(TodoList));
+  // localStorage.removeItem("UNIQUE_TODO_LIST");
 
   return (
     <TodoContext.Provider value={{ todoList, dispatchTodoList }}>
