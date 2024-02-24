@@ -40,7 +40,7 @@ const InputTodo = () => {
         />
         <button
           type="submit"
-          className="absolute right-1 sm:right-3 top-1 sm:top-2 px-2 bg-[#c31431ef] text-sm sm:text-lg text-gray-200 font-semibold w-fit  rounded-sm sm:rounded-md"
+          className="font-poppins absolute right-1 sm:right-3 top-1 sm:top-2 px-2 bg-[#c31431ef] text-sm sm:text-lg text-gray-200 font-semibold w-fit  rounded-sm sm:rounded-md"
         >
           Create
         </button>
