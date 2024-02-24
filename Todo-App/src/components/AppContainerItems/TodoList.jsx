@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "./CrudContainer";
 import { FaCheckCircle } from "react-icons/fa";
+import { BiSolidEdit } from "react-icons/bi";
 import { TfiCheck } from "react-icons/tfi";
 
 const TodoList = ({ currentDisplay }) => {
@@ -17,7 +18,7 @@ const TodoList = ({ currentDisplay }) => {
           >
             {(currentDisplay === "COMPLETED" || currentDisplay === "ALL") &&
               item.todoStatus === "COMPLETED" && (
-                <span className="text-green-500 absolute left-1">
+                <span className="text-green-500 text-xs sm:text-base absolute left-1">
                   <FaCheckCircle />
                 </span>
               )}
@@ -41,7 +42,7 @@ const TodoList = ({ currentDisplay }) => {
                 </div>
               )}
             <span
-              className="text-xs sm:text-base h-fit w-fit absolute right-2"
+              className="text-xs sm:text-base h-fit w-fit absolute right-0"
               onClick={(e) => {
                 dispatchTodoList({
                   name: "COMPLETED_TODO",
@@ -54,7 +55,12 @@ const TodoList = ({ currentDisplay }) => {
               }}
             >
               {(currentDisplay === "ACTIVE" || currentDisplay === "ALL") &&
-                item.todoStatus === "ACTIVE" && <TfiCheck />}
+                item.todoStatus === "ACTIVE" && (
+                  <div className="flex gap-1">
+                    <BiSolidEdit />
+                    <TfiCheck />
+                  </div>
+                )}
             </span>
           </li>
         );

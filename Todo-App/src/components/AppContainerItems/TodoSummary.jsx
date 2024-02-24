@@ -10,7 +10,9 @@ const Summary = ({ currentDisplay, setCurrentDisplay }) => {
       <div className="">{activeTodos} items left</div>
       <div className="flex justify-center gap-2 sm:gap-8">
         <button
-          className={currentDisplay === "ALL" && "bg-sky-600  px-2 rounded-md"}
+          className={
+            currentDisplay === "ALL" ? "bg-sky-600  px-2 rounded-md" : "_"
+          }
           type="button"
           onClick={() => {
             setCurrentDisplay("ALL");
@@ -20,7 +22,7 @@ const Summary = ({ currentDisplay, setCurrentDisplay }) => {
         </button>
         <button
           className={
-            currentDisplay === "ACTIVE" && "bg-yellow-400 px-2 rounded-md"
+            currentDisplay === "ACTIVE" ? "bg-yellow-400 px-2 rounded-md" : "_"
           }
           type="button"
           onClick={() => {
@@ -31,7 +33,9 @@ const Summary = ({ currentDisplay, setCurrentDisplay }) => {
         </button>
         <button
           className={
-            currentDisplay === "COMPLETED" && "bg-green-500  px-2 rounded-md"
+            currentDisplay === "COMPLETED"
+              ? "bg-green-500  px-2 rounded-md"
+              : "_"
           }
           type="button"
           onClick={() => {
