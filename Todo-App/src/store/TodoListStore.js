@@ -1,6 +1,14 @@
 const addTodo = (todoList, action) => {
   return [action.payload, ...todoList];
 };
+const editedTodo = (todoList, payload) => {
+  todoList.forEach((item) => {
+    if (item.UNIQUE_TODO_ID === payload.UNIQUE_TODO_ID) {
+      item.todoName = payload.todoName;
+    }
+  });
+  return [...todoList];
+};
 const completedTodo = (todoList, action) => {
   let newTodoList = todoList;
 
@@ -21,5 +29,15 @@ const countActiveTodo = (todoList) => {
   });
   return count;
 };
-export { completedTodo, countActiveTodo };
+
+const countCompletedTodo = (todoList) => {
+  let count = 0;
+  todoList.forEach((item) => {
+    if (item.todoStatus === "COMPLETED") {
+      count++;
+    }
+  });
+  return count;
+};
+export { completedTodo, countActiveTodo, countCompletedTodo, editedTodo };
 export default addTodo;

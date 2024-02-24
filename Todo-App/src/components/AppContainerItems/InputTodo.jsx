@@ -3,7 +3,7 @@ import { TodoContext } from "./CrudContainer";
 
 const InputTodo = () => {
   const todoNameRef = useRef("");
-  const { dispatchTodoList } = useContext(TodoContext);
+  const { dispatchTodoList, setCurrentDisplay } = useContext(TodoContext);
   return (
     <form
       action=""
@@ -14,6 +14,7 @@ const InputTodo = () => {
           todoNameRef.current.value = "";
           return 0;
         }
+
         dispatchTodoList({
           name: "ADD_TODO",
           payload: {
@@ -23,6 +24,7 @@ const InputTodo = () => {
           },
         });
         todoNameRef.current.value = "";
+        setCurrentDisplay("ALL");
       }}
     >
       <div className="relative">
