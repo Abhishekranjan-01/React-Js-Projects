@@ -14,7 +14,7 @@ const TodoItem = ({ item }) => {
     <div className="flex gap-3 border-b border-b-gray-400">
       <li
         id={item.UNIQUE_TODO_ID}
-        className="list-none relative  bg-white rounded-md flex flex-row gap-2 flex-wrap justify-between items-center text-wrap py-1 w-full"
+        className="list-none relative bg-white rounded-md flex flex-row gap-2 flex-wrap justify-between items-center text-wrap py-1 w-full"
       >
         {editStatus == false && (
           <div className="flex gap-2 items-center">
