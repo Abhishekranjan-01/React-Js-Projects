@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "./CrudContainer";
 import TodoItem from "./TodoItem";
 
@@ -6,7 +6,7 @@ const TodoList = () => {
   const { todoList, currentDisplay } = useContext(TodoContext);
 
   return (
-    <ul className="font-poppins bg-white rounded-md overflow-y-scroll max-h-52 md:max-h-[220px] 2xl:max-xl:max-h-[400px] py-2 shadow-2xl">
+    <ul className="font-poppins bg-white rounded-md overflow-y-scroll max-h-52 md:max-h-[220px] 2xl:max-xl:max-h-[400px] px-2 py-2 shadow-2xl">
       {todoList.map((item, i) => {
         return (
           <>
@@ -20,7 +20,9 @@ const TodoList = () => {
               )}
 
             {currentDisplay === "ALL" && (
-              <TodoItem key={item.UNIQUE_TODO_ID} item={item} />
+              <>
+                <TodoItem key={item.UNIQUE_TODO_ID} item={item} />
+              </>
             )}
           </>
         );
