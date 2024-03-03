@@ -1,12 +1,14 @@
-import axios from "axios";
-import CardContainer from "./components/CardContainer";
+import { useEffect } from "react";
+import BackgroundContainer from "./components/BackgroundContainer";
 
 function App() {
+  const deviceScreenData = null;
+
+  // useEffect(() => {window}, []);
   return (
-    <>
-      <h1>Hello</h1>
-      <CardContainer />
-    </>
+    <section>
+      <BackgroundContainer deviceScreenData={deviceScreenData} />
+    </section>
   );
 }
 
