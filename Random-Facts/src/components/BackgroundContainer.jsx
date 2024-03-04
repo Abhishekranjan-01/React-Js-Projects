@@ -2,15 +2,17 @@ import { useState } from "react";
 import CardContainer from "./CardContainer";
 import { createClient } from "pexels";
 
-const BackgroundContainer = ({ deviceScreenData }) => {
+const BackgroundContainer = () => {
   const [isBackgroundFetched, setBackgroundFetched] = useState(false);
   let test = true;
 
   const dBI =
     "bg-[url('https://images.pexels.com/photos/957039/hut-alpine-mountains-bavaria-957039.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1')]";
 
-  let burl =
-    "'https://images.pexels.com/photos/3961942/pexels-photo-3961942.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1'";
+  let turl =
+    "https://images.pexels.com/photos/101529/pexels-photo-101529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1";
+
+  let burl = `url(${turl})`;
 
   const client = createClient(
     "ZtKlkEPY4TJLdBGHjsyzEj5D8yvYzjW7fkUPFURNY8Wh1cejKeGZwikC"
@@ -54,8 +56,7 @@ const BackgroundContainer = ({ deviceScreenData }) => {
   return (
     <section
       style={{
-        background:
-          "url(https://images.pexels.com/photos/101529/pexels-photo-101529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1)",
+        backgroundImage: burl,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
