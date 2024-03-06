@@ -26,6 +26,8 @@ const BackgroundContainer = () => {
   console.log("Before Test Is Bg Image Fetched");
   if (isBgImgFetched == false) {
     console.log("Start BgImage Fetching");
+    console.log("Client:\t" + client);
+    console.log("Client:\t" + client.photos);
     client.photos
       .search({ query, per_page: 80, orientation })
       .then(({ photos }) => {
