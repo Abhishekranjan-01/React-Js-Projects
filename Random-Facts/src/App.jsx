@@ -1,11 +1,7 @@
 import BackgroundContainer from "./components/BackgroundContainer";
 
 function App() {
-  return (
-    <section>
-      <BackgroundContainer />
-    </section>
-  );
+  return <BackgroundContainer />;
 }
 
 export default App;

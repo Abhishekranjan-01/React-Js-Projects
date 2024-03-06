@@ -1,18 +1,13 @@
 import { useState } from "react";
-import CardContainer from "./CardContainer";
 import { createClient } from "pexels";
+import FactCard from "./FactCard";
 
 const BackgroundContainer = () => {
-  const [isBackgroundFetched, setBackgroundFetched] = useState(false);
-  let test = true;
+  const [isBgImgFetched, setIsBgImgFetched] = useState(false);
+  const [currentBgImage, setCurrBgImg] = useState(null);
+  const [holdBgUrl, setHoldBgUrl] = useState(null);
 
-  const dBI =
-    "bg-[url('https://images.pexels.com/photos/957039/hut-alpine-mountains-bavaria-957039.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1')]";
-
-  let turl =
-    "https://images.pexels.com/photos/101529/pexels-photo-101529.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200&dpr=1";
-
-  let burl = `url(${turl})`;
+  const DefaultBgImg = `url(https://ik.imagekit.io/demo/default-image.jpg)`;
 
   const client = createClient(
     "ZtKlkEPY4TJLdBGHjsyzEj5D8yvYzjW7fkUPFURNY8Wh1cejKeGZwikC"
@@ -22,47 +17,54 @@ const BackgroundContainer = () => {
   const screenWidth = window.screen.availWidth;
   //   console.log(screenWidth);
   let orientation = "landscape";
+
   if (screenWidth < 450) {
-    orientation = "potrait";
+    orientation = "portrait";
   } else {
     orientation = "landscape";
   }
-  if (isBackgroundFetched == false) {
+  console.log("Before Test Is Bg Image Fetched");
+  if (isBgImgFetched == false) {
+    console.log("Start BgImage Fetching");
     client.photos
       .search({ query, per_page: 80, orientation })
-      .then((photos) => {
+      .then(({ photos }) => {
+        console.log("Setting Bg Url");
         const random = Math.round(Math.random() * 80 - 1);
-        // console.log(photos.photos[random]);
-        // console.log(photos.photos[random].src.landscape);
-        const bgImageUrl = `'${
-          photos.photos[random].src.landscape + "&dpr=1"
-        }'`;
-        // console.log(burl);
-        console.log(bgImageUrl);
-        const bgImageClass = `bg-[url(${burl})]`;
-        // console.log(bgImageClass);
-        // console.log(dBI);
+        setHoldBgUrl(photos[random].src[orientation]);
+        console.log(photos[random].src);
+        console.log("IsImgFc Setting About To Done");
+        setIsBgImgFetched(true);
 
-        setBackgroundFetched(bgImageClass);
+        console.log("holdUrl:\t" + holdBgUrl);
       });
   }
-
-  // 450>Landscape
-  // 450<Potrait
+  console.log("Iam Count");
   {
-    console.log("Available Height:\t" + window.screen.orientation.type);
+    console.log("isBgFetched:\t" + isBgImgFetched);
   }
-
   return (
     <section
-      style={{
-        backgroundImage: burl,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-      className={" w-[100vw] h-[100vh]"}
+      style={
+        isBgImgFetched != false
+          ? {
+              backgroundImage: currentBgImage,
+            }
+          : {
+              backgroundImage: DefaultBgImg,
+            }
+      }
+      className={
+        "flex justify-center items-center bg-cover bg-no-repeat w-[100vw] h-[100vh]"
+      }
     >
-      {/* <CardContainer /> */}
+      {console.log("Inside Background Container JSX")}
+      <FactCard
+        isBgImgFetched={isBgImgFetched}
+        setIsBgImgFetched={setIsBgImgFetched}
+        holdBgUrl={holdBgUrl}
+        setCurrBgImg={setCurrBgImg}
+      />
     </section>
   );
 };

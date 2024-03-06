@@ -4,8 +4,6 @@ import FactCard from "./FactCard";
 const factContext = createContext(null);
 
 const CardContainer = () => {
-  const [fact, setFact] = useState(null);
-
   return (
     <factContext.Provider value={{ fact, setFact }}>
       <FactCard />
