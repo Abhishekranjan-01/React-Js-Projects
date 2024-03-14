@@ -10,9 +10,7 @@ const FactCard = ({
 }) => {
   const [isFactFetched, setIsFactFetched] = useState(false);
   const [fact, setFact] = useState(null);
-  console.log("Initialization Of Fact Card");
-  console.log("Is Fact Fetched: " + isFactFetched);
-  console.log("Is Bg Fetched: " + isBgImgFetched);
+
   {
     isFactFetched == false &&
       isBgImgFetched &&
@@ -21,32 +19,20 @@ const FactCard = ({
           headers: { "X-Api-Key": "kzMswFghBRV9VjS48Kvs7xkhSzNrO3WJC113h6Uq" },
         })
         .then(({ data }) => {
-          console.log("Fact Received From API");
           setFact(data);
           setIsFactFetched(true);
-          console.log(data);
-          console.log("Fact Setting Done");
         })
         .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          console.log("Axios Executed");
-          console.log("FL Is Fact Fetched: " + isFactFetched);
-          console.log("FL Is Bg Fetched: " + isBgImgFetched);
+          alert(err);
         });
   }
-  console.log("BR Is Fact Fetched: " + isFactFetched);
-  console.log("BR Is Bg Fetched: " + isBgImgFetched);
+
   return (
     <section className=" max-w-72 lg:max-w-80 h-48 lg:min-h-56 backdrop-blur-lg font-semibold text-gray-950 text-sm sm:text-base rounded-lg p-2 list-none">
-      {console.log("Inside FactCard JSX B/F check condition")}
       {(isFactFetched && isBgImgFetched) == false ? (
         <RingLoader color="#c31432" size={60} />
       ) : (
         <>
-          {setCurrBgImg(`url(${holdBgUrl})`)}
-          {console.log("Started Loading Facts")}
           {fact.map((item, i) => {
             return (
               <li
@@ -67,6 +53,7 @@ const FactCard = ({
               </li>
             );
           })}
+          {setCurrBgImg(`url(${holdBgUrl})`)}
         </>
       )}
     </section>
