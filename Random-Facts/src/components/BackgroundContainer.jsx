@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useState } from "react";
-import { createClient } from "pexels";
 import WavyBg from "./WavyBg";
 import FactCard from "./FactCard";
 
@@ -7,10 +7,6 @@ const BackgroundContainer = () => {
   const [isBgImgFetched, setIsBgImgFetched] = useState(false);
   const [currentBgImage, setCurrBgImg] = useState(null);
   const [holdBgUrl, setHoldBgUrl] = useState(null);
-
-  const client = createClient(
-    "ZtKlkEPY4TJLdBGHjsyzEj5D8yvYzjW7fkUPFURNY8Wh1cejKeGZwikC"
-  );
 
   const query = "Nature";
   const screenWidth = window.screen.availWidth;
@@ -24,13 +20,24 @@ const BackgroundContainer = () => {
   }
 
   if (isBgImgFetched == false) {
-    client.photos
-      .search({ query, per_page: 80, orientation })
-      .then(({ photos }) => {
+    axios
+      .get(
+        `https://api.pexels.com/v1/search/?page=1&per_page=80&orientation=${orientation}&query=${query}`,
+        {
+          headers: {
+            Authorization: import.meta.VITE_PEXEL_BG_FETCH,
+          },
+        }
+      )
+      .then((res) => {
         const random = Math.round(Math.random() * 80 - 1);
-        setHoldBgUrl(photos[random].src[orientation]);
 
+        setHoldBgUrl(res.data.photos[random].src[orientation]);
         setIsBgImgFetched(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
       });
   }
 
