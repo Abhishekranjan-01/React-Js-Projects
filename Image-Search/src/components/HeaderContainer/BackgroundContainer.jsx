@@ -6,11 +6,13 @@ import getOrientation from "../../Orientation/getOrientation";
 
 export default function backgroundContainer() {
   const [HoldBgUrl, setHoldBgUrl] = useState(false);
+  console.log("I am bg Container");
   useEffect(() => {
     const query = "Nature";
 
     if (!HoldBgUrl) {
-      fethImages(query, getOrientation(), setHoldBgUrl);
+      console.log("Inside Bg , For Fetch Image");
+      fethImages(query, setHoldBgUrl);
     }
   });
 

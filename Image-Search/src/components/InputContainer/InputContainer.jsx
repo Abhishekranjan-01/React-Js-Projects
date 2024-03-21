@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { useContext } from "react";
 import fethImages from "../../API/fetchImages";
-import getOrientation from "../../Orientation/getOrientation";
 import { APIdataProvider } from "../Home/Home";
 
 export default function inputContainer() {
@@ -12,8 +11,10 @@ export default function inputContainer() {
     <form
       className="block mx-auto w-4/5 sm:w-1/2 shadow-2xl"
       action=""
-      onSubmit={() => {
-        fethImages(inputRef, getOrientation(), setDataFromAPI);
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        fethImages(inputRef.current.value, setDataFromAPI, dataFromAPI);
       }}
     >
       <div className="w-full flex rounded-md px-2 py-1 bg-white">
