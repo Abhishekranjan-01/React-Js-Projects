@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import BackgroundContainer from "../HeaderContainer/BackgroundContainer";
+import ImageContainer from "../ImageContainer/ImageContainer";
 
 const APIdataProvider = createContext(null);
 let setDataFromAPIRef = null;
@@ -12,6 +13,7 @@ function Home() {
   return (
     <APIdataProvider.Provider value={{ dataFromAPI, setDataFromAPI }}>
       <BackgroundContainer />
+      {dataFromAPI && <ImageContainer />}
     </APIdataProvider.Provider>
   );
 }

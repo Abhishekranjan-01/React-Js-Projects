@@ -21,7 +21,7 @@ export default function fethImages(
         setHoldBgUrlOrsetDataFromApi(res.data.photos);
       } else {
         setHoldBgUrlOrsetDataFromApi(
-          `url(${res.data.photos[random].src[orientation]})`
+          `url(${res.data.photos[random].src[getOrientation()]})`
         );
       }
     })

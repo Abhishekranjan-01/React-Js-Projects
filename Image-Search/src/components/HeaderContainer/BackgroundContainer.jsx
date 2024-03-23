@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import InputContainer from "../InputContainer/InputContainer";
 import fethImages from "../../API/fetchImages";
-import getOrientation from "../../Orientation/getOrientation";
 
 export default function backgroundContainer() {
   const [HoldBgUrl, setHoldBgUrl] = useState(false);
