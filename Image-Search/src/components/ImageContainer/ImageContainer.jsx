@@ -11,7 +11,7 @@ export default function ImageContainer() {
   const navigate = useNavigate();
   return (
     <main className=" bg-[#F8F8F8] pb-12">
-      <div className="max-w-[95%] mt-[40px] columns-1 sm:columns-3 gap-[15px]">
+      <div className="mt-[40px] columns-1 sm:columns-3 gap-[15px]">
         {dataFromAPI.map((allData) => (
           <div
             key={allData.id}
