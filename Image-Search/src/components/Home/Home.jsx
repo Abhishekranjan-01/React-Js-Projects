@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import BackgroundContainer from "../HeaderContainer/BackgroundContainer";
 import ImageContainer from "../ImageContainer/ImageContainer";
+import AuroraBackgroundDemo from "../Background/BackgroundAurora";
 
 const APIdataProvider = createContext(null);
 
@@ -18,7 +19,7 @@ function Home() {
   return (
     <APIdataProvider.Provider value={{ dataFromAPI, setDataFromAPI }}>
       <BackgroundContainer />
-      {dataFromAPI && <ImageContainer />}
+      {dataFromAPI ? <ImageContainer /> : <AuroraBackgroundDemo />}
     </APIdataProvider.Provider>
   );
 }

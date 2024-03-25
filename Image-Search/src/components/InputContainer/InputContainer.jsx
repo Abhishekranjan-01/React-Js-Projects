@@ -21,7 +21,6 @@ export default function inputContainer() {
         <input
           ref={inputRef}
           className="w-full sm:text-lg rounded-md outline-none"
-          s
           type="text"
           name="search"
           placeholder="Search For Image"

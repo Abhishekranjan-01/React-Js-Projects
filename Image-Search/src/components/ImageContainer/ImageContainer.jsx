@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { APIdataProvider } from "../Home/Home";
 import ContainerButtons from "../ImageContainerButtons/ContainerButtons";
+import Footer from "../Footer/Footer";
 
 export default function ImageContainer() {
   const { dataFromAPI, setDataFromAPI } = useContext(APIdataProvider);
@@ -36,7 +37,7 @@ export default function ImageContainer() {
   window.addEventListener("scroll", HandleScrollEvent);
 
   return (
-    <main className=" pb-12 mx-auto">
+    <main className="sm:w-11/12 pb-12 mx-auto sm:overflow-x-hidden">
       <div className="mt-[40px] columns-1 sm:columns-3 gap-[15px]">
         {arrayOfImages.map((allData, i) => (
           <div
@@ -53,6 +54,7 @@ export default function ImageContainer() {
           </div>
         ))}
       </div>
+      <Footer />
     </main>
   );
 }

@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaDownload } from "react-icons/fa";
 import downloadImg from "../../Features/downloadImg";
 import getOrientation from "../../Orientation/getOrientation";
+import Footer from "../Footer/Footer";
 
 export default function About() {
   const location = useLocation();
@@ -45,6 +46,7 @@ export default function About() {
           Download landscape
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

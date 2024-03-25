@@ -19,7 +19,7 @@ export default function backgroundContainer() {
       style={{
         backgroundImage: HoldBgUrl && HoldBgUrl,
       }}
-      className={`flex flex-col justify-center bg-black w-screen h-56 sm:h-96 bg-no-repeat bg-cover`}
+      className={`flex flex-col justify-center bg-black w-screen h-56 sm:h-52 2xl:h-96 bg-no-repeat bg-cover`}
     >
       <InputContainer />
     </header>
