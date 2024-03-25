@@ -13,7 +13,7 @@ export default function inputContainer() {
       action=""
       onSubmit={(e) => {
         e.preventDefault();
-
+        localStorage.removeItem("SEARCH_IMAGE_RESULTS");
         fethImages(inputRef.current.value, setDataFromAPI, dataFromAPI);
       }}
     >

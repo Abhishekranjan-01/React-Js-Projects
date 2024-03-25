@@ -17,7 +17,10 @@ export default function fethImages(
     .then((res) => {
       const random = Math.round(Math.random() * 80 - 1);
       if (dataFromAPI != null) {
-        console.log(res.data.photos);
+        localStorage.setItem(
+          "DATA_FROM_API_IMAGE_RESULTS",
+          JSON.stringify(res.data.photos)
+        );
         setHoldBgUrlOrsetDataFromApi(res.data.photos);
       } else {
         setHoldBgUrlOrsetDataFromApi(
