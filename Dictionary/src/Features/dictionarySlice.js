@@ -29,15 +29,12 @@ const dictionarySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(isPending, (state) => {
-      console.log("is Pending");
       state.isLoading = true;
       state.isFulfilled = false;
       state.isRejected = false;
       state.wordInfo = [];
     });
     builder.addMatcher(isFulfilled, (state, action) => {
-      console.log("is fulfilled");
-      console.log(action);
       state.isFulfilled = true;
       state.isLoading = false;
 
@@ -45,7 +42,7 @@ const dictionarySlice = createSlice({
       if (state.isRejected) state.isRejected = false;
     });
     builder.addMatcher(isRejected, (state) => {
-      console.log("is Rejected");
+      alert("Word Not Found");
       state.isLoading = false;
       state.isRejected = true;
       if (state.isFulfilled) state.isFulfilled = false;

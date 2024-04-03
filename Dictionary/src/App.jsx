@@ -9,7 +9,14 @@ function App() {
   return (
     <>
       <Header />
-      {isLoading && <ProgressDemo />}
+
+      {isLoading ? (
+        <div className="flex justify-center mt-24 sm:mt-52">
+          <ProgressDemo />
+        </div>
+      ) : (
+        ""
+      )}
       {wordInfo.length !== 0 && <Main />}
     </>
   );

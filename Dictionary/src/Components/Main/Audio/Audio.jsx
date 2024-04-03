@@ -21,7 +21,7 @@ export default function Audio() {
           setActive(false);
         }}
         className="block text-lg bg-transparent "
-        src={wordInfo[0].phonetics[0].audio}
+        src={wordInfo[0].phonetics[wordInfo[0].phonetics.length - 1].audio}
       ></audio>
     </span>
   );

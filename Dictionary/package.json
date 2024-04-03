@@ -1,7 +1,7 @@
 {
   "name": "dictionary",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^2.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

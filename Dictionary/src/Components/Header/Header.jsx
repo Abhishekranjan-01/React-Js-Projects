@@ -7,7 +7,7 @@ export default function Header() {
         backgroundImage:
           "url('https://images.pexels.com/photos/15406291/pexels-photo-15406291/free-photo-of-inflation-word-on-smartphone-touchscreen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
       }}
-      className=" h-32 sm:h-60 2xl:h-80 bg-cover bg-no-repeat flex flex-col justify-center"
+      className=" h-56 sm:h-52 2xl:h-96 bg-cover bg-no-repeat flex flex-col justify-center"
     >
       <Form />
     </header>
