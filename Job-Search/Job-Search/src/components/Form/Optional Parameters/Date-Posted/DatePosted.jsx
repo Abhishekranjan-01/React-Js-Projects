@@ -1,4 +1,19 @@
+import { useSelector, useDispatch } from "react-redux";
+import { addDatePosted } from "@/Features/formSlice/formSlice";
+import { useEffect, useState } from "react";
+
 export default function DatePosted() {
+  const [datePostedValue, setDatePostedValue] = useState("");
+  const dispatch = useDispatch((store) => store.formSlice);
+  const { datePosted } = useSelector(
+    (state) => state.formSlice.optionalParameters
+  );
+  useEffect(() => {
+    if (datePosted !== "all") {
+      setDatePostedValue(datePosted);
+    }
+  });
+
   return (
     <div className="w-full lg:w-1/4 flex flex-col ssm:gap-[2px]">
       <label
@@ -10,7 +25,11 @@ export default function DatePosted() {
       <select
         className="font-Roboto_Mono llg:min-w-44 lg:min-w-56 text-center "
         name="data-posted"
-        defaultValue={""}
+        value={datePostedValue}
+        onChange={(e) => {
+          setDatePostedValue(e.target.value);
+          dispatch(addDatePosted(e.target.value));
+        }}
       >
         <option value="" disabled hidden>
           Optional
