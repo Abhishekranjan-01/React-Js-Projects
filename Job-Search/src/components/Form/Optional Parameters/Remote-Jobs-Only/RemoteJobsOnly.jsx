@@ -1,4 +1,21 @@
+import { useSelector, useDispatch } from "react-redux";
+import { addRemoteJobsOnly } from "@/Features/formSlice/formSlice";
+import { useEffect, useState } from "react";
+import { store } from "@/store/store";
+
 export default function RemoteJobsOnly() {
+  const { remoteJobsOnly } = useSelector(
+    (store) => store.formSlice[1].optionalParameters
+  );
+  const dispatch = useDispatch((store) => store.formSlice);
+  const [remoteJobsValue, setRemoteJobsValue] = useState("");
+
+  useEffect(() => {
+    if (remoteJobsOnly !== "") {
+      setRemoteJobsValue(remoteJobsOnly);
+    }
+  });
+
   return (
     <div className="w-full lg:w-fit flex flex-col ssm:gap-[2px]">
       <label
@@ -10,12 +27,14 @@ export default function RemoteJobsOnly() {
       <select
         name="remote_jobs_only"
         id=""
-        defaultValue={""}
+        value={remoteJobsValue}
+        onChange={(e) => {
+          setRemoteJobsValue(e.target.value);
+          dispatch(addRemoteJobsOnly(e.target.value));
+        }}
         className="font-Roboto_Mono llg:min-w-44 lg:min-w-56 text-center "
       >
-        <option value="" disabled hidden>
-          Optional
-        </option>
+        <option value="">Optional</option>
         <option value="true">True</option>
         <option value="false">False</option>
       </select>

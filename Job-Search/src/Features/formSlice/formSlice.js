@@ -7,7 +7,7 @@ const initialState = [
       datePosted: { defaultValue: "all", isDefaultValueChanged: false },
       employment_types: "",
       jobRequirements: "",
-      remoteJobsOnly: "true",
+      remoteJobsOnly: "",
     },
   },
 ];
@@ -28,7 +28,9 @@ const formSlice = createSlice({
     addJobRequirements: (state, { payload }) => {
       state[1].optionalParameters.jobRequirements = payload;
     },
-    addRemoteJobsOnly: (state, action) => {},
+    addRemoteJobsOnly: (state, { payload }) => {
+      state[1].optionalParameters.remoteJobsOnly = payload;
+    },
   },
 });
 
