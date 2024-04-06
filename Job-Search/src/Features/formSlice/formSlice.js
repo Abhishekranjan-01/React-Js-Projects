@@ -6,7 +6,7 @@ const initialState = [
     optionalParameters: {
       datePosted: { defaultValue: "all", isDefaultValueChanged: false },
       employment_types: "",
-      jobRequirements: "no_experience",
+      jobRequirements: "",
       remoteJobsOnly: "true",
     },
   },
@@ -25,7 +25,9 @@ const formSlice = createSlice({
     addEmploymentTypes: (state, { payload }) => {
       state[1].optionalParameters.employment_types = payload;
     },
-    addJobRequirements: (state, action) => {},
+    addJobRequirements: (state, { payload }) => {
+      state[1].optionalParameters.jobRequirements = payload;
+    },
     addRemoteJobsOnly: (state, action) => {},
   },
 });
