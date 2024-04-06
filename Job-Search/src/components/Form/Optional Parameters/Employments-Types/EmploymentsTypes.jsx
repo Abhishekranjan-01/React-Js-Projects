@@ -1,4 +1,20 @@
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addEmploymentTypes } from "@/Features/formSlice/formSlice";
+
 export default function EmploymentsTypes() {
+  const { employment_types } = useSelector(
+    (store) => store.formSlice[1].optionalParameters
+  );
+  const dispatch = useDispatch((store) => store.formSlice);
+  const [employmentValue, setEmploymentTypesValue] = useState("");
+
+  useEffect(() => {
+    if (employmentValue === "" && employment_types !== "") {
+      setEmploymentTypesValue(employment_types);
+    }
+  });
+
   return (
     <div className="w-full lg:w-fit flex flex-col ssm:gap-[2px]">
       <label
@@ -10,11 +26,13 @@ export default function EmploymentsTypes() {
       <select
         className="font-Roboto_Mono llg:min-w-44 lg:min-w-56 text-center "
         name="employment_types"
-        defaultValue={""}
+        value={employmentValue}
+        onChange={(e) => {
+          setEmploymentTypesValue(e.target.value);
+          dispatch(addEmploymentTypes(e.target.value));
+        }}
       >
-        <option value="" disabled hidden>
-          Optional
-        </option>
+        <option value="">Optional</option>
         <option value="FULLTIME">FULLTIME</option>
         <option value="CONTRACTOR">CONTRACTOR</option>
         <option value="PARTTIME">PARTTIMES</option>

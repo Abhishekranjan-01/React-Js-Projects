@@ -5,7 +5,7 @@ const initialState = [
   {
     optionalParameters: {
       datePosted: { defaultValue: "all", isDefaultValueChanged: false },
-      employmentsTypes: "INTERN",
+      employment_types: "",
       jobRequirements: "no_experience",
       remoteJobsOnly: "true",
     },
@@ -16,13 +16,15 @@ const formSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    addInputText: (state, action) => {},
-    addDatePosted: (state, action) => {
-      state[1].optionalParameters.datePosted.defaultValue = action.payload;
+    addInputText: (state, { payload }) => {},
+    addDatePosted: (state, { payload }) => {
+      state[1].optionalParameters.datePosted.defaultValue = payload;
       state[1].optionalParameters.datePosted.isDefaultValueChanged = true;
       console.log("From FormSlice");
     },
-    addEmploymentsTypes: (state, action) => {},
+    addEmploymentTypes: (state, { payload }) => {
+      state[1].optionalParameters.employment_types = payload;
+    },
     addJobRequirements: (state, action) => {},
     addRemoteJobsOnly: (state, action) => {},
   },
@@ -31,7 +33,7 @@ const formSlice = createSlice({
 export const {
   addInputText,
   addDatePosted,
-  addEmploymentsTypes,
+  addEmploymentTypes,
   addJobRequirements,
   addRemoteJobsOnly,
 } = formSlice.actions;
