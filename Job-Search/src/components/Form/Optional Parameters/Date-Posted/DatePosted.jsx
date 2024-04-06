@@ -6,11 +6,12 @@ export default function DatePosted() {
   const [datePostedValue, setDatePostedValue] = useState("");
   const dispatch = useDispatch((store) => store.formSlice);
   const { datePosted } = useSelector(
-    (state) => state.formSlice.optionalParameters
+    (state) => state.formSlice[1].optionalParameters
   );
+
   useEffect(() => {
-    if (datePosted !== "all") {
-      setDatePostedValue(datePosted);
+    if (datePostedValue === "" && datePosted.isDefaultValueChanged) {
+      setDatePostedValue(datePosted.defaultValue);
     }
   });
 
