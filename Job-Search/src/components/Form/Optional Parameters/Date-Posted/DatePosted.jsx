@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 export default function DatePosted() {
   const [datePostedValue, setDatePostedValue] = useState("");
   const dispatch = useDispatch((store) => store.formSlice);
-  const { datePosted } = useSelector(
+  const { date_posted } = useSelector(
     (state) => state.formSlice[1].optionalParameters
   );
 
   useEffect(() => {
-    if (datePostedValue === "" && datePosted.isDefaultValueChanged) {
-      setDatePostedValue(datePosted.defaultValue);
+    if (datePostedValue === "" && date_posted.isDefaultValueChanged) {
+      setDatePostedValue(date_posted.defaultValue);
     }
   });
 

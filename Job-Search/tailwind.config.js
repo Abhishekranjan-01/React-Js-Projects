@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        grad_1: `linear-gradient("to right", "#0099f7", "#f11712")`,
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

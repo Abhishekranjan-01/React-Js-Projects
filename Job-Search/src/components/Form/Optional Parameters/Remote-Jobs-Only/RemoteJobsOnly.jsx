@@ -1,18 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addRemoteJobsOnly } from "@/Features/formSlice/formSlice";
+import { addremote_jobs_only } from "@/Features/formSlice/formSlice";
 import { useEffect, useState } from "react";
 import { store } from "@/store/store";
 
-export default function RemoteJobsOnly() {
-  const { remoteJobsOnly } = useSelector(
+export default function remote_jobs_only() {
+  const { remote_jobs_only } = useSelector(
     (store) => store.formSlice[1].optionalParameters
   );
   const dispatch = useDispatch((store) => store.formSlice);
   const [remoteJobsValue, setRemoteJobsValue] = useState("");
 
   useEffect(() => {
-    if (remoteJobsOnly !== "") {
-      setRemoteJobsValue(remoteJobsOnly);
+    if (remote_jobs_only !== "") {
+      setRemoteJobsValue(remote_jobs_only);
     }
   });
 
@@ -30,7 +30,7 @@ export default function RemoteJobsOnly() {
         value={remoteJobsValue}
         onChange={(e) => {
           setRemoteJobsValue(e.target.value);
-          dispatch(addRemoteJobsOnly(e.target.value));
+          dispatch(addremote_jobs_only(e.target.value));
         }}
         className="font-Roboto_Mono llg:min-w-44 lg:min-w-56 text-center "
       >

@@ -1,19 +1,19 @@
 import { store } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addJobRequirements } from "@/Features/formSlice/formSlice";
+import { addjob_requirements } from "@/Features/formSlice/formSlice";
 
-export default function JobRequirements() {
-  const { jobRequirements } = useSelector(
+export default function job_requirements() {
+  const { job_requirements } = useSelector(
     (store) => store.formSlice[1].optionalParameters
   );
 
   const dispatch = useDispatch((store) => store.formSlice);
-  const [jobRequirementsValue, setJobRequirementsValue] = useState("");
+  const [job_requirementsValue, setjob_requirementsValue] = useState("");
 
   useEffect(() => {
-    if (JobRequirements !== "") {
-      setJobRequirementsValue(jobRequirements);
+    if (job_requirements !== "") {
+      setjob_requirementsValue(job_requirements);
     }
   });
 
@@ -28,11 +28,11 @@ export default function JobRequirements() {
       <select
         className="font-Roboto_Mono llg:min-w-44 lg:min-w-56 text-center "
         name="job-requirements"
-        value={jobRequirementsValue}
+        value={job_requirementsValue}
         id=""
         onChange={(e) => {
-          setJobRequirementsValue(e.target.value);
-          dispatch(addJobRequirements(e.target.value));
+          setjob_requirementsValue(e.target.value);
+          dispatch(addjob_requirements(e.target.value));
         }}
       >
         <option value="">Optional</option>
