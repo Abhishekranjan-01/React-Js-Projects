@@ -1,8 +1,13 @@
-# React + Vite
+# Job-Search App (using Redux-tookit with AsyncThunk):-
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features:-
 
-Currently, two official plugins are available:
+- You can search for Jobs Or Internship,even you can apply sum filters on it such as "Remote Only","Date Posted","Employment Types (full-time,intern & e.t.c)",Job Requirements(no_experience,more_than 3 year experience & e.t.c).
+- Error Handling and Loader will during shown during fething of data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack:-
+
+- React Js and Redux-toolkit(For Global State Management).
+- Async Thunk used for Handling API calls.
+- Tailwind Css (for responsiveness).
+- Shadcn UI for accordion Effect.
